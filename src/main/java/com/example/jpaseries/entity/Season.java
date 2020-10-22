@@ -3,9 +3,9 @@ package com.example.jpaseries.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,4 +18,8 @@ public class Season {
     @Id
     @GeneratedValue
     private long id;
+    private int numberOfSeason;
+    private LocalDate releaseDate;
+    @OneToMany(mappedBy = "season", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    private Set<Episode> episodes;
 }
