@@ -1,9 +1,12 @@
 package com.example.jpaseries;
 
 import com.example.jpaseries.entity.Episode;
+import com.example.jpaseries.entity.Genre;
 import com.example.jpaseries.entity.Season;
+import com.example.jpaseries.entity.Series;
 import com.example.jpaseries.repository.EpisodeRepository;
 import com.example.jpaseries.repository.SeasonRepository;
+import com.example.jpaseries.repository.SeriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,9 +22,8 @@ public class JpaseriesApplication {
 
 
     @Autowired
-    private SeasonRepository seasonRepository;
+    private SeriesRepository seriesRepository;
 
-    private Set<Episode> episodeSet = new HashSet<>();
 
     public static void main(String[] args) {
         SpringApplication.run(JpaseriesApplication.class, args);
@@ -31,6 +33,7 @@ public class JpaseriesApplication {
 
     @Bean
     public CommandLineRunner init() {
+        Set<Episode> episodeSet = new HashSet<>();
         return args -> {
             Episode episode = Episode.builder()
                     .name("first")
@@ -46,7 +49,16 @@ public class JpaseriesApplication {
                     .build();
 
             episode.setSeason(season);
-            seasonRepository.save(season);
+
+            Series series = Series.builder()
+                    .name("The Asd")
+                    .releaseDate(LocalDate.of(2012,12,15))
+                    .season(season)
+                    .genre(Genre.DOCUMENTUM)
+                    .build();
+            season.setSeries(series);
+            seriesRepository.save(series);
+
         };
     }
 

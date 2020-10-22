@@ -16,10 +16,10 @@ public class Episode {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
     private String name;
     private int part;
     private LocalDate releaseDate;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private Season season;
 }
