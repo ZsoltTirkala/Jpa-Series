@@ -22,6 +22,9 @@ public class Series {
     private LocalDate releaseDate;
     @Enumerated(EnumType.STRING)
     private Genre genre;
+    @ElementCollection
+    @Singular
+    private Set<String> actors;
     @Singular
     @OneToMany(mappedBy = "series", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @EqualsAndHashCode.Exclude

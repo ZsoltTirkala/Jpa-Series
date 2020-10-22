@@ -41,6 +41,7 @@ public class JpaseriesApplication {
                     .name("first")
                     .part(3)
                     .releaseDate(LocalDate.of(2020,10,22))
+                    .actor("John Doe")
                     .build();
             episodeSet.add(episode);
 
@@ -56,6 +57,8 @@ public class JpaseriesApplication {
                     .name("The Asd")
                     .releaseDate(LocalDate.of(2012,12,15))
                     .season(season)
+                    .actor("John Doe")
+                    .actor("Jane Doe")
                     .genre(Genre.DOCUMENTUM)
                     .build();
             season.setSeries(series);
