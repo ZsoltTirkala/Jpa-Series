@@ -49,6 +49,7 @@ public class JpaseriesApplication {
                     .numberOfSeason(2)
                     .releaseDate(LocalDate.of(2020,10,22))
                     .episodes(episodeSet)
+                    .numberOfEpisodes(0)
                     .build();
 
             episode.setSeason(season);

@@ -25,4 +25,15 @@ public class Season {
     private Set<Episode> episodes;
     @ManyToOne
     private Series series;
+    @Transient
+    private int numberOfEpisodes;
+
+
+    public void countNumberOfEpisodes() {
+        int counter = 0;
+        for (Episode episode: episodes) {
+            counter++;
+        }
+        numberOfEpisodes = counter;
+    }
 }
