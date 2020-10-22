@@ -12,6 +12,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -32,6 +33,7 @@ public class JpaseriesApplication {
 
 
     @Bean
+    @Profile("production")
     public CommandLineRunner init() {
         Set<Episode> episodeSet = new HashSet<>();
         return args -> {
